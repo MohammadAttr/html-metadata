@@ -18,13 +18,9 @@ Features
 Installation
 ------------
 
-1. Simply include the mixin file in your Pug/Jade project:
+Simply include the mixin file in your Pug/Jade project:
 ``` 
 include path/to/html-metadata.pug
-```
-2. You can use inheritance for more professional control :
-```
-extends path/to/html-metadata.pug
 ```
 Usage
 -----
