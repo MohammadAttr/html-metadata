@@ -1,0 +1,47 @@
+//- html-metadata v1.0
+//- html-metadata v1.0 mixins
+- gl = {}
+mixin init(url, title, description, imageSite) 
+  - gl.url = url
+  - gl.title = title
+  - gl.description = description
+  - gl.imageSite = imageSite
+mixin seo(author, keywordsArray)
+  meta(charset="UTF-8")
+  meta(
+    name="viewport" 
+    content="width=device-width, initial-scale=1.0"
+    )
+  meta(name="author" content=author)
+  meta(name="description" content=gl.description)
+  meta(name="keywords" content=keywordsArray)
+  meta(name="robots" content="index, follow") 
+mixin og
+  meta(property="og:type" content="website") 
+  meta(property="og:url" content=gl.url)
+  meta(property="og:title" content=gl.title)
+  meta(property="og:description" content=gl.description)
+  meta(property="og:image" content=gl.imageSite)
+mixin twitter
+  meta(name="twitter:card" content="summary_large_image")
+  meta(name="twitter:url" content=gl.url)
+  meta(name="twitter:title" content=gl.title)
+  meta(name="twitter:description" content=gl.description)
+  meta(name="twitter:image" content=gl.imageSite)
+mixin Others(themeColor) 
+  link(rel="canonical" href=gl.url)
+  meta(name="theme-color" content=themeColor)
+  meta(http-equiv="X-UA-Compatible" content="IE=edge")
+
+//- html-metadata v1.0 mixin imports
+- description = "" 
+- keywords = []
++init("url", "title", description, "image-url")
+// SEO Metadata
++seo("author", keywords)
+// Open-Graph Tags
++og
+// Twitter Tags
++twitter 
+// Other Tags
++Others("theme-color")
