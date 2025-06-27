@@ -1,12 +1,13 @@
 //- html-metadata v1.0
 //- html-metadata v1.0 mixins
 - gl = {}
+- gl.arr = ""
 mixin init(url, title, description, imageSite) 
   - gl.url = url
   - gl.title = title
   - gl.description = description
   - gl.imageSite = imageSite
-mixin seo(author, keywordsArray)
+mixin seo(author, arr)
   meta(charset="UTF-8")
   title= gl.title
   meta(
@@ -15,7 +16,13 @@ mixin seo(author, keywordsArray)
     )
   meta(name="author" content=author)
   meta(name="description" content=gl.description)
-  meta(name="keywords" content=keywordsArray)
+  //- compile function 
+  -for (i=0;i<arr.length;i++)
+    if (i == arr.length - 1)
+        - gl.arr += arr[i]
+    else 
+        - gl.arr += arr[i] + ", "
+  meta(name="keywords" content=gl.arr)
   meta(name="robots" content="index, follow") 
 mixin og
   meta(property="og:type" content="website") 
